@@ -8,6 +8,7 @@
     "@mui/material": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "formik": "^2.4.3",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^6.15.0",

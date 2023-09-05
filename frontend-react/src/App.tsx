@@ -7,7 +7,7 @@ import HomePage from "./pages/Home";
 
 export default function App() {
   return (
-    <Container maxWidth="sm">
+    <Container component="main" maxWidth="sm" style={{marginTop: '5%'}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
