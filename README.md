@@ -1,16 +1,24 @@
-# fullstack-afiliados
-Este projeto é uma copia do teste da coodesh: https://lab.coodesh.com/eulersudbrack/fullstack-afiliados
-
 # Fullstack Afiliados
+>  This is a challenge by [Coodesh](https://coodesh.com/)
 
 O objetivo desse teste é avaliar as suas habilidades em programação.
 
-### Antes de começar
- 
-- Prepare o projeto para ser disponibilizado no Github, copiando o conteúdo deste repositório para o seu (ou utilize o fork do projeto e aponte para o Github). Confirme que a visibilidade do projeto é pública (não esqueça de colocar no readme a referência a este challenge);
-- O projeto deve utilizar a Linguagem específica na sua Vaga (caso esteja se candidatando). Por exempo: Python, R, Scala e entre outras;
-- Considere como deadline 5 dias a partir do início do desafio. Caso tenha sido convidado a realizar o teste e não seja possível concluir dentro deste período, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documentar todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes do que o seu processo de pensamento e decisões à medida que as completa, por isso tente documentar e apresentar os seus hipóteses e decisões na medida do possível.
+# Tecnologias utilizadas
+Frontend: React / MUI (Material UI)
+Backend: Node / Adonis.js / MySQL
+- Documentação do backend no arquivo postman
+## Rodando o projeto
+### Backend
+- Crie o banco utilizando o docker compose no diretorio do backend
+- Copie o conteúdo do .env.example para seu .env
+- Rode um ```npm install``` para instalar as dependências do projeto
+- Instale o CLI do adonis: ```npm i --global @adonisjs/cli```
+- Para criar as tabelas no banco utilize o CLI do adonis: ```adonis migration:run```
+- ```npm start```
+### Frontend
+- ```npm i```
+- ```npm start```
+
 
 ## Descrição do projeto
 
@@ -109,7 +117,7 @@ Seu projeto será avaliado de acordo com os seguintes critérios:
 - Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
 - Se está usando github pessoal, referencie que é um challenge by coodesh:  
 
->  This is a challenge by [Coodesh](https://coodesh.com/)
+
 
 ## Finalização e Instruções para a Apresentação
 
