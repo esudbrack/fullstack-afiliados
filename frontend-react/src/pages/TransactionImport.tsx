@@ -38,7 +38,7 @@ export default function TransactionImport () {
         setLoading(false);
       })
       .catch((e) => {
-        setAlertMessage(e.response.data.message);
+        setAlertMessage(e.response.data.message || 'Erro interno no servidor.');
         setError(true);
         setDisplayAlert(true);
         setLoading(false);
