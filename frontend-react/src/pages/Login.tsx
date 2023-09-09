@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import * as React from "react";
 import { Navigate } from "react-router-dom";
 
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, Container, Grid, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors";
 
 import { MyField } from "../components/MyField";
@@ -62,7 +62,7 @@ export default function LoginPage() {
   }
 
   return (
-    <>
+    <Container component="main" maxWidth="sm" style={{ marginTop: "5%" }}>
       {redirect && <Navigate to="/dashboard" replace={true} />}
       {displayAlert && (
         <Alert
@@ -140,6 +140,6 @@ export default function LoginPage() {
           )}
         </Formik>
       </Box>
-    </>
+    </Container>
   );
 }
