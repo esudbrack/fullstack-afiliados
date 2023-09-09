@@ -2,6 +2,7 @@
 const Transaction = use("App/Models/Transaction");
 const Database = use("Database");
 const Helpers = use("Helpers");
+const { log } = require("console");
 const fs = require("fs");
 
 class TransactionController {
@@ -75,12 +76,18 @@ class TransactionController {
         return { sellers: [] };
       }
 
+      let total = 0;
+
       for (const seller of sellers) {
+        total += seller.total;
         seller.transactions = transactions.filter(
           (t) => t.seller == seller.name
         );
       }
-
+      total = (total/100).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })
       // Sanitize data
       sellers = sellers.map((s) => {
         return {
@@ -117,7 +124,7 @@ class TransactionController {
         };
       });
 
-      return { sellers };
+      return { total, sellers };
     } catch (error) {
       console.log(error.message);
       return response.status(403).json({
