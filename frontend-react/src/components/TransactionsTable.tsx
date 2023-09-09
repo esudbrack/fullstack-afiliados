@@ -33,9 +33,9 @@ export function TransactionsTable({ transactions }: ITransactionsTableProps) {
         <TableHead>
           <TableRow>
             <TableCell>Descrição do produto</TableCell>
-            <TableCell align="right">Data</TableCell>
-            <TableCell align="right">Tipo</TableCell>
-            <TableCell align="right">Valor</TableCell>
+            <TableCell>Data</TableCell>
+            <TableCell>Tipo</TableCell>
+            <TableCell>Valor</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,14 +47,9 @@ export function TransactionsTable({ transactions }: ITransactionsTableProps) {
               <TableCell component="th" scope="row">
                 {transaction.product_description}
               </TableCell>
-              <TableCell align="right">
-                {formatDate(transaction.transaction_date)}
-              </TableCell>
-              <TableCell align="right">{transaction.type}</TableCell>
-              <TableCell
-                align="right"
-                style={{ color: colorByType(transaction.type) }}
-              >
+              <TableCell>{formatDate(transaction.transaction_date)}</TableCell>
+              <TableCell>{transaction.type}</TableCell>
+              <TableCell style={{ color: colorByType(transaction.type) }}>
                 {transaction.value}
               </TableCell>
             </TableRow>

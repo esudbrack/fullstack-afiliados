@@ -11,16 +11,19 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { Seller } from "../types";
 import SellerCard from "../components/SellerCard";
+import { blue } from "@mui/material/colors";
 
 export default function TransactionList() {
   let [loading, setLoading] = useState(true);
   let [sellers, setSellers] = useState<Seller[]>([]);
+  let [total, setTotal] = useState('')
 
   function fetchTransactions() {
     api
       .get("/transactions/list")
       .then((response) => {
         setSellers(response.data.sellers);
+        setTotal(response.data.total);
         setLoading(false);
       })
       .catch((e) => {
@@ -44,13 +47,13 @@ export default function TransactionList() {
         <CircularProgress color="inherit" />
       </Backdrop>
       {!sellers.length ? (
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom color={blue[700]}>
           Nenhuma transação encontrada.
         </Typography>
       ) : (
         <>
-          <Typography variant="h4" gutterBottom>
-            Lista de transações por cliente
+          <Typography variant="h4" gutterBottom color={blue[700]}>
+            Lista de transações por cliente (Total: {total})
           </Typography>
           <Grid
             container
