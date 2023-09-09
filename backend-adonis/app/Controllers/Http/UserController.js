@@ -9,7 +9,7 @@ class UserController {
           if (!email || !password) {
             return response.status(400).send({
               status: "error",
-              message: "You must enter a email and password.",
+              message: "É preciso informar email e senha.",
             });
           }
     
@@ -21,7 +21,7 @@ class UserController {
           // Check if current user is admin before creating
           if (user && !auth.user?.is_admin) {
             return response.status(403).send({
-              message: "Not authorized",
+              message: "Não autorizado.",
             });
           }
     
@@ -29,7 +29,7 @@ class UserController {
           if (userExists) {
             return response.status(400).send({
               status: "error",
-              message: "Email in use",
+              message: "E-mail em uso.",
             });
           }
     
@@ -43,13 +43,14 @@ class UserController {
     
           await user.save();
           return response.status(200).json({
-            message: "User created with success",
+            message: "Conta criada com sucesso.",
           });
         } catch (error) {
           console.log(error.message);
           return response.status(403).json({
             status: "error",
             debug_error: error.message,
+            message: 'Erro interno no servidor.'
           });
         }
       }
@@ -70,7 +71,7 @@ class UserController {
         } catch (error) {
           console.log(error.message);
           response.status(403).json({
-            message: error.message,
+            message: 'E-mail ou senha inválidos.',
           });
         }
       }

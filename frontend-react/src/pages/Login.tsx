@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import * as React from "react";
 import { Navigate } from "react-router-dom";
 
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors";
 
 import { MyField } from "../components/MyField";
@@ -19,26 +19,61 @@ interface Data {
 export default function LoginPage() {
   const { login, token }: any = useAuth();
   let [redirect, setRedirect] = useState(token ? true : false);
+  let [loading, setLoading] = useState(false);
+  let [error, setError] = useState(false);
+  let [displayAlert, setDisplayAlert] = useState(false);
+  let [alertMessage, setAlertMessage] = useState(false);
 
   useEffect(() => {
     setRedirect(token ? true : false);
   }, [token]);
 
   function signIn(data: Data) {
-    api.post("/signin", data).then((response) => {
-      login(response.data.token);
-    });
+    setLoading(true);
+    api
+      .post("/signin", data)
+      .then((response) => {
+        setLoading(false);
+        login(response.data.token);
+      })
+      .catch((e) => {
+        setAlertMessage(e.response.data.message);
+        setError(true);
+        setDisplayAlert(true);
+        setLoading(false);
+      });
   }
   function signUp(data: Data) {
-    token;
-    api.post("/signup", data).then((response) => {
-      console.log(response.data);
-    });
+    setLoading(true);
+    api
+      .post("/signup", data)
+      .then((response) => {
+        setAlertMessage(response.data.message);
+        setError(false);
+        setDisplayAlert(true);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setAlertMessage(e.response.data.message);
+        setError(true);
+        setDisplayAlert(true);
+        setLoading(false);
+      });
   }
 
   return (
     <>
       {redirect && <Navigate to="/dashboard" replace={true} />}
+      {displayAlert && (
+        <Alert
+          severity={error ? "error" : "success"}
+          onClose={() => {
+            setDisplayAlert(false);
+          }}
+        >
+          {alertMessage}
+        </Alert>
+      )}
       <Box
         sx={{
           marginTop: 8,
@@ -75,6 +110,7 @@ export default function LoginPage() {
                   <Grid item xs={6}>
                     <Button
                       fullWidth
+                      disabled={loading}
                       onClick={() => {
                         signIn(values);
                       }}
@@ -88,6 +124,7 @@ export default function LoginPage() {
                     <Button
                       type="button"
                       fullWidth
+                      disabled={loading}
                       onClick={() => {
                         signUp(values);
                       }}
