@@ -19,3 +19,8 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 Route.post("/signup", "UserController.register");
 Route.post("/signin", "UserController.login");
+
+Route.group(() => {
+    Route.post("/transactions/import", "TransactionController.import");
+    Route.get("/transactions/list", "TransactionController.list");
+  }).middleware('admin')

@@ -58,7 +58,7 @@ class UserController {
       async login({ request, auth, response }) {
         const { email, password } = request.all();
         try {
-          let token = await auth.attempt(email, password);
+          let token = await auth.withRefreshToken().attempt(email, password);
           let user = await User.findBy({ email });
           user = user.toJSON();
     
