@@ -29,7 +29,7 @@ export const ProtectedLayout = () => {
           </Button>
         </Toolbar>
       </AppBar>
-      <Container component="main" maxWidth="md" style={{ marginTop: "5%" }}>
+      <Container component="main" maxWidth="lg" style={{ marginTop: "5%", marginBottom: "5%" }}>
         {outlet}
       </Container>
     </div>
