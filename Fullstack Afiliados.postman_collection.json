@@ -75,6 +75,87 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "List Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/transactions/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Transactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sales",
+									"type": "file",
+									"src": "/C:/Users/euler/Projects/desafio-fullstack-afiliados/sales.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/transactions/import",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"import"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTY5NDIzMDE0MH0.JZ9Qv0w0G2VYbipIavu8hEcWt2qY4MPXxR7uppnEVE0",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"variable": [
